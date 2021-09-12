@@ -66,9 +66,13 @@ static const char *screenshot[] = {"scrot", "/home/gabo/Pictures/screenshots/%Y-
 static const char *incBrightness[] = {"brightness", "50", "inc", NULL};
 static const char *decBrightness[] = {"brightness", "50", "dec", NULL};
 
-static const char *launchNvim[] = {"st", "nvim", NULL};
+static const char *incVolume[] = {"amixer", "set", "Master", "5%+", NULL};
+static const char *decVolume[] = {"amixer", "set", "Master", "5%-", NULL};
+static const char *toggleVolume[] = {"amixer", "set", "Master", "toggle", NULL};
 
+static const char *launchNvim[] = {"st", "nvim", NULL};
 static const char *launchBrowser[] = {"brave", NULL};
+
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -114,8 +118,11 @@ static Key keys[] = {
 	{MODKEY,                        XK_Print,  spawn,         {.v = screenshot}},
 	{MODKEY,                        XK_F6,     spawn,         {.v = incBrightness}},
 	{MODKEY,                        XK_F5,     spawn,         {.v = decBrightness}},
-	{MODKEY|ShiftMask,              XK_n,      spawn,         {.v = launchNvim}},
-	{MODKEY,                        XK_w,      spawn,         {.v = launchBrowser}}
+	{MODKEY,                        XK_n,      spawn,         {.v = launchNvim}},
+	{MODKEY,                        XK_w,      spawn,         {.v = launchBrowser}},
+	{MODKEY,                        XK_F3,     spawn,         {.v = incVolume}},
+	{MODKEY,                        XK_F2,     spawn,         {.v = decVolume}},
+	{MODKEY,                        XK_F1,     spawn,         {.v = toggleVolume}}
 };
 
 /* button definitions */
