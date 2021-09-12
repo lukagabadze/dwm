@@ -66,6 +66,10 @@ static const char *screenshot[] = {"scrot", "/home/gabo/Pictures/screenshots/%Y-
 static const char *incBrightness[] = {"brightness", "50", "inc", NULL};
 static const char *decBrightness[] = {"brightness", "50", "dec", NULL};
 
+static const char *launchNvim[] = {"st", "nvim", NULL};
+
+static const char *launchBrowser[] = {"brave", NULL};
+
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
@@ -107,9 +111,11 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_p,      quit,           {0} },
-	{MODKEY,                        XK_Print,   spawn,         {.v = screenshot}},
-	{MODKEY,                        XK_F6,   spawn,         {.v = incBrightness}},
-	{MODKEY,                        XK_F5,   spawn,         {.v = decBrightness}}
+	{MODKEY,                        XK_Print,  spawn,         {.v = screenshot}},
+	{MODKEY,                        XK_F6,     spawn,         {.v = incBrightness}},
+	{MODKEY,                        XK_F5,     spawn,         {.v = decBrightness}},
+	{MODKEY|ShiftMask,              XK_n,      spawn,         {.v = launchNvim}},
+	{MODKEY,                        XK_w,      spawn,         {.v = launchBrowser}}
 };
 
 /* button definitions */
