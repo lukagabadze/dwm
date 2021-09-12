@@ -63,6 +63,9 @@ static const char *termcmd[]  = { "st", NULL };
 
 static const char *screenshot[] = {"scrot", "/home/gabo/Pictures/screenshots/%Y-%m-%d-%T-screenshot.jpg", NULL  };
 
+static const char *incBrightness[] = {"brightness", "400", NULL};
+static const char *decBrightness[] = {"brightness", "200", NULL};
+
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
@@ -104,7 +107,9 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_p,      quit,           {0} },
-	{MODKEY,                        XK_Print,   spawn,         {.v = screenshot}}
+	{MODKEY,                        XK_Print,   spawn,         {.v = screenshot}},
+	{MODKEY,                        XK_F5,   spawn,         {.v = decBrightness}},
+	{MODKEY,                        XK_F6,   spawn,         {.v = incBrightness}}
 };
 
 /* button definitions */
