@@ -71,6 +71,7 @@ static const char *decVolume[] = {"amixer", "set", "Master", "5%-", NULL};
 static const char *toggleVolume[] = {"amixer", "set", "Master", "toggle", NULL};
 
 static const char *launchNvim[] = {"st", "nvim", NULL};
+static const char *launchRanger[] = {"st", "ranger", NULL};
 static const char *launchBrowser[] = {"brave", NULL};
 
 
@@ -119,6 +120,7 @@ static Key keys[] = {
 	{MODKEY,                        XK_F6,     spawn,         {.v = incBrightness}},
 	{MODKEY,                        XK_F5,     spawn,         {.v = decBrightness}},
 	{MODKEY,                        XK_n,      spawn,         {.v = launchNvim}},
+	{MODKEY,                        XK_r,      spawn,         {.v = launchRanger}},
 	{MODKEY,                        XK_w,      spawn,         {.v = launchBrowser}},
 	{MODKEY,                        XK_F3,     spawn,         {.v = incVolume}},
 	{MODKEY,                        XK_F2,     spawn,         {.v = decVolume}},
