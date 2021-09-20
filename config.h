@@ -72,7 +72,7 @@ static const char *toggleVolume[] = {"amixer", "set", "Master", "toggle", NULL};
 
 static const char *launchNvim[] = {"st", "nvim", NULL};
 static const char *launchRanger[] = {"st", "ranger", NULL};
-static const char *launchBrowser[] = {"brave", NULL};
+static const char *launchBrowser[] = {"firefox", NULL};
 
 
 static Key keys[] = {
