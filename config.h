@@ -33,6 +33,7 @@ static const Rule rules[] = {
 	{ "Gimp",     NULL,       NULL,       	    1 << 8,       0,           0,         0,        -1 },
 	{ "st",       NULL,       NULL,       	    0,            0,           1,         0,        -1 },
 	{ NULL,       NULL,       "Event Tester",   0,            0,           0,         1,        -1 },
+	//{ "firefox",  NULL,       NULL,             0,            0,           0,         1,        -1 },
 };
 
 /* layout(s) */
@@ -63,7 +64,8 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 
-static const char *screenshot[] = {"scrot", "/home/gabo/Pictures/screenshots/%Y-%m-%d-%T-screenshot.jpg", NULL  };
+static const char *screenshotTmp[] = {"screenshot", "-t", NULL  };
+static const char *screenshotSave[] = {"screenshot", "-n", NULL  };
 
 static const char *incBrightness[] = {"brightness", "50", "inc", NULL};
 static const char *decBrightness[] = {"brightness", "50", "dec", NULL};
@@ -74,7 +76,7 @@ static const char *toggleVolume[] = {"amixer", "set", "Master", "toggle", NULL};
 
 static const char *launchNvim[] = {"st", "nvim", NULL};
 static const char *launchRanger[] = {"st", "ranger", NULL};
-static const char *launchBrowser[] = {"firefox", NULL};
+static const char *launchBrowser[] = {"brave", NULL};
 
 
 static Key keys[] = {
@@ -118,7 +120,8 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_p,      quit,           {0} },
-	{MODKEY,                        XK_Print,  spawn,         {.v = screenshot}},
+	{MODKEY,                        XK_Print,  spawn,         {.v = screenshotTmp}},
+	{MODKEY|ShiftMask,              XK_Print,  spawn,         {.v = screenshotSave}},
 	{MODKEY,                        XK_F6,     spawn,         {.v = incBrightness}},
 	{MODKEY,                        XK_F5,     spawn,         {.v = decBrightness}},
 	{MODKEY,                        XK_n,      spawn,         {.v = launchNvim}},
