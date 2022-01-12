@@ -76,13 +76,18 @@ static const char *toggleVolume[] = {"amixer", "set", "Master", "toggle", NULL};
 
 static const char *launchNvim[] = {"st", "nvim", NULL};
 static const char *launchRanger[] = {"st", "ranger", NULL};
-static const char *launchBrowser[] = {"brave", NULL};
+static const char *launchBrowser[] = {"firefox", NULL};
+
+static const char *emojiCopy[] = {"emoji", NULL};
+static const char *screenLock[] = {"xlock", NULL};
+
 
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,												XK_z,			 spawn,		       {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -129,7 +134,9 @@ static Key keys[] = {
 	{MODKEY,                        XK_w,      spawn,         {.v = launchBrowser}},
 	{MODKEY,                        XK_F3,     spawn,         {.v = incVolume}},
 	{MODKEY,                        XK_F2,     spawn,         {.v = decVolume}},
-	{MODKEY,                        XK_F1,     spawn,         {.v = toggleVolume}}
+	{MODKEY,                        XK_F1,     spawn,         {.v = toggleVolume}},
+	{MODKEY,                        XK_o,      spawn,         {.v = emojiCopy}},
+	{MODKEY,                        XK_End,      spawn,         {.v = screenLock}}
 };
 
 /* button definitions */
