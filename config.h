@@ -15,11 +15,14 @@ static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#35bf5c";
 static const char col_red[]         = "#e81e39";
-static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan },
-};
+//static const char *colors[][3]      = {
+	//[>               fg         bg         border   <]
+	//[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
+	//[SchemeSel]  = { col_gray4, col_cyan,  col_cyan },
+//};
+
+#include "/home/gabo/.cache/wal/colors-wal-dwm.h"
+
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
@@ -61,7 +64,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", NULL };
 static const char *termcmd[]  = { "st", NULL };
 
 static const char *screenshotTmp[] = {"screenshot", "-t", NULL  };
@@ -73,6 +76,10 @@ static const char *decBrightness[] = {"brightness", "50", "dec", NULL};
 static const char *incVolume[] = {"amixer", "set", "Master", "5%+", NULL};
 static const char *decVolume[] = {"amixer", "set", "Master", "5%-", NULL};
 static const char *toggleVolume[] = {"amixer", "set", "Master", "toggle", NULL};
+
+static const char *incBacklight[] = {"kbd-backlight", "-i" , NULL};
+static const char *decBacklight[] = {"kbd-backlight", "-d" , NULL};
+static const char *toggleBacklight[] = {"kbd-backlight", "-t" , NULL};
 
 static const char *launchNvim[] = {"st", "nvim", NULL};
 static const char *launchRanger[] = {"st", "ranger", NULL};
@@ -125,18 +132,27 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_p,      quit,           {0} },
+
 	{MODKEY,                        XK_Print,  spawn,         {.v = screenshotTmp}},
 	{MODKEY|ShiftMask,              XK_Print,  spawn,         {.v = screenshotSave}},
-	{MODKEY,                        XK_F6,     spawn,         {.v = incBrightness}},
-	{MODKEY,                        XK_F5,     spawn,         {.v = decBrightness}},
+
+
 	{MODKEY,                        XK_n,      spawn,         {.v = launchNvim}},
 	{MODKEY,                        XK_r,      spawn,         {.v = launchRanger}},
 	{MODKEY,                        XK_w,      spawn,         {.v = launchBrowser}},
+
 	{MODKEY,                        XK_F3,     spawn,         {.v = incVolume}},
 	{MODKEY,                        XK_F2,     spawn,         {.v = decVolume}},
 	{MODKEY,                        XK_F1,     spawn,         {.v = toggleVolume}},
+
+	{MODKEY,                        XK_F6,     spawn,         {.v = incBrightness}},
+	{MODKEY,                        XK_F5,     spawn,         {.v = decBrightness}},
+	{MODKEY,                        XK_F9,     spawn,         {.v = toggleBacklight}},
+	{MODKEY,                        XK_F11,    spawn,         {.v = decBacklight}},
+	{MODKEY,                        XK_F12,    spawn,         {.v = incBacklight}},
+
 	{MODKEY,                        XK_o,      spawn,         {.v = emojiCopy}},
-	{MODKEY,                        XK_End,      spawn,         {.v = screenLock}}
+	{MODKEY,                        XK_End,      spawn,       {.v = screenLock}}
 };
 
 /* button definitions */
