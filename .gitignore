@@ -1,2 +1,5 @@
 dwm
-dwm.o
+patches
+*.o
+*.orig
+*.rej

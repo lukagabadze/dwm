@@ -5,9 +5,7 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int gappx     = 5;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
-static int swallowfloating          = 0;   
-static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=8" };
+static int swallowfloating          = 0;   static const int topbar             = 1;        /* 0 means bottom bar */ static const char *fonts[]          = { "monospace:size=8" };
 static const char dmenufont[]       = "monospace:size=8";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
@@ -53,11 +51,14 @@ static const Layout layouts[] = {
 
 /* key definitions */
 #define MODKEY Mod4Mask
+#define ALTMOD Mod1Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} }, \
+	{ ALTMOD|ShiftMask,             KEY,      tagnthmon,      {.i = TAG } },
+
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -102,7 +103,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_v,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY|ShiftMask,                       XK_Return, zoom,           {0} },
+	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
@@ -152,7 +153,14 @@ static Key keys[] = {
 	{MODKEY,                        XK_F12,    spawn,         {.v = incBacklight}},
 
 	{MODKEY,                        XK_o,      spawn,         {.v = emojiCopy}},
-	{MODKEY,                        XK_End,      spawn,       {.v = screenLock}}
+	{MODKEY,                        XK_End,    spawn,         {.v = screenLock}},
+
+	/* dual monitor setup */
+  { MODKEY|ShiftMask,             XK_j,      focusnthmon,    {.i = -1 } },
+  { MODKEY|ShiftMask,             XK_k,      focusnthmon,    {.i = +1 } },
+
+
+  { MODKEY|ShiftMask,             XK_Tab,      focusnthmon,    {0} },
 };
 
 /* button definitions */
