@@ -76,7 +76,7 @@ static const char *decBrightness[] = {"brightness", "50", "dec", NULL};
 
 static const char *incVolume[] = {"amixer", "set", "Master", "5%+", NULL};
 static const char *decVolume[] = {"amixer", "set", "Master", "5%-", NULL};
-static const char *toggleVolume[] = {"amixer", "set", "Master", "toggle", NULL};
+static const char *toggleVolume[] = {"pactl", "set-sink-mute", "0", "toggle", NULL};
 
 static const char *incBacklight[] = {"kbd-backlight", "-i" , NULL};
 static const char *decBacklight[] = {"kbd-backlight", "-d" , NULL};
