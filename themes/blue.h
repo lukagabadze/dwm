@@ -4,7 +4,7 @@ static const char norm_border[] = "#8591a2";
 
 static const char sel_fg[] = "#bfd0e8";
 static const char sel_bg[] = "#028bd5";
-static const char sel_border[] = "#bfd0e8";
+static const char sel_border[] = "#1f9add";
 
 static const char *colors[][3]      = {
     /*               fg           bg         border                         */
