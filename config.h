@@ -80,6 +80,11 @@ static const char *launchBrowser[] = {"firefox", NULL};
 static const char *emojiCopy[] = {"emoji", NULL};
 static const char *screenLock[] = {"xlock", NULL};
 
+static const char *mountPartition[] = {"mount-partition", NULL};
+static const char *umountPartition[] = {"umount-partition", NULL};
+
+static const char *toggleThinklight[] = {"toggleThinklight", NULL};
+
 
 
 static Key keys[] = {
@@ -142,6 +147,11 @@ static Key keys[] = {
 	{MODKEY,                        XK_F9,     spawn,         {.v = toggleBacklight}},
 	{MODKEY,                        XK_F11,    spawn,         {.v = decBacklight}},
 	{MODKEY,                        XK_F12,    spawn,         {.v = incBacklight}},
+
+	{MODKEY,                        XK_Home,   spawn,         {.v = mountPartition}},
+	{MODKEY,                        XK_End,    spawn,         {.v = umountPartition}},
+
+	{MODKEY,                        XK_Prior,  spawn,         {.v = toggleThinklight }},
 
 	{MODKEY,                        XK_o,      spawn,         {.v = emojiCopy}},
 	{MODKEY,                        XK_End,    spawn,         {.v = screenLock}},
