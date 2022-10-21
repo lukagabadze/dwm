@@ -1,6 +1,7 @@
 dwm
 patches
 colors.h
+specs.h
 *.o
 *.orig
 *.rej
