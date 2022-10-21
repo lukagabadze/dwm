@@ -12,6 +12,9 @@ static const char dmenufont[]       = "monospace:size=8";
 /* color set */
 #include "./colors.h"
 
+/* user specific configurations */
+#include "./specs.h"
+
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
@@ -129,6 +132,9 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_p,      quit,           {0} },
+
+
+	{ ALTMOD|ControlMask,           XK_t,  		 togglescratch, {.v = scratchpadcmd } },
 
 	{MODKEY,                        XK_Print,  spawn,         {.v = screenshotTmp}},
 	{MODKEY|ShiftMask,              XK_Print,  spawn,         {.v = screenshotSave}},
