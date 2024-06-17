@@ -70,7 +70,7 @@ static const char *decBrightness[] = {"brightness", "50", "dec", NULL};
 
 static const char *incVolume[] = {"amixer", "set", "Master", "5%+", NULL};
 static const char *decVolume[] = {"amixer", "set", "Master", "5%-", NULL};
-static const char *toggleVolume[] = {"pactl", "set-sink-mute", "0", "toggle", NULL};
+static const char *toggleVolume[] = {"pactl", "set-sink-mute", "1", "toggle", NULL};
 
 static const char *incBacklight[] = {"kbd-backlight", "-i" , NULL};
 static const char *decBacklight[] = {"kbd-backlight", "-d" , NULL};
@@ -87,6 +87,8 @@ static const char *mountPartition[] = {"mount-partition", NULL};
 static const char *umountPartition[] = {"umount-partition", NULL};
 
 static const char *toggleThinklight[] = {"toggleThinklight", NULL};
+
+static const char *toggleMicrophone[] = {"pactl", "set-source-mute", "1", "toggle", NULL};
 
 
 
@@ -155,10 +157,12 @@ static Key keys[] = {
 	{MODKEY,                        XK_F11,    spawn,         {.v = decBacklight}},
 	{MODKEY,                        XK_F12,    spawn,         {.v = incBacklight}},
 
-	{MODKEY,                        XK_Home,   spawn,         {.v = mountPartition}},
-	{MODKEY,                        XK_End,    spawn,         {.v = umountPartition}},
+	// {MODKEY,                        XK_Home,   spawn,         {.v = mountPartition}},
+	// {MODKEY,                        XK_End,    spawn,         {.v = umountPartition}},
 
 	{MODKEY,                        XK_Prior,  spawn,         {.v = toggleThinklight }},
+
+	{MODKEY,                        XK_u,  spawn,         {.v = toggleMicrophone }},
 
 	{MODKEY,                        XK_o,      spawn,         {.v = emojiCopy}},
 	{MODKEY,                        XK_End,    spawn,         {.v = screenLock}},
